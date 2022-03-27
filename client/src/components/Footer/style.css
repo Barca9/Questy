@@ -1,0 +1,6 @@
+.footer-wrapper{
+    font-family: 'Slackey', fantasy;
+   /* height: 100px;*/
+    border: 2px solid blueviolet;
+    flex: 0 0 100px;
+}

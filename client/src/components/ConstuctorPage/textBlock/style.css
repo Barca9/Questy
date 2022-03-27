@@ -1,0 +1,15 @@
+
+.step_name{
+    margin: 10px;
+    color:#304476;
+    font-size: 23px;
+}
+
+.text_content{
+    margin: 10px;
+    font-size: 18px;
+}
+
+.btn-delete{
+    padding: 20px;
+}

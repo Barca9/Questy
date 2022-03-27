@@ -1,0 +1,86 @@
+
+.constructor{
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.template_area{
+    display: flex;
+    width: 394px;
+    background-color: #111646;
+}
+
+.vertical_menu{
+    width: 86px;
+    background-color: #304476;
+}
+
+.vertical_menu_item{
+    position: relative;
+    height: 81px;
+    background-color: #111646;
+}
+
+.item_inner{
+    position: absolute;
+    top: 16px;
+    left: 25px;
+    width: 34px;
+    height: 34px;
+    background-color: #FFFFFF;
+}
+
+.template{
+    background-color: white;
+    border: 2px solid #111646;
+    width: 135px;
+    height: 100px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.gallery_item{
+     display: flex;
+     flex-wrap: wrap;
+     width: 308px;
+ }
+
+.constructor_area{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 813px;
+    background-color: #E7E8EC;
+}
+
+.buttons_area{
+    height: 70px;
+    background-color: #304476;
+}
+
+.constructor_window {
+    position: absolute;
+    top: 126px;
+    left: 111px;
+    width: 603px;
+    height: 898px;
+    overflow-y: scroll;
+    background-color: #FFF;
+}
+
+.initial_block,
+.finally_block,
+.text_block {
+    border: 1px solid #C4C4C4;
+    border-radius: 3px;
+    width: 484px;
+    height: 270px;
+    margin: 20px auto;
+}
+
+.form_inputs input, textarea{
+    display: block;
+    width: 400px;
+    margin: 10px;
+    resize: none;
+}
