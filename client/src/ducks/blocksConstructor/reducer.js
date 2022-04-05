@@ -25,8 +25,8 @@ export const blocksConstructorInitialState = {
     }
 };
 
+
 export const blocksConstructorReducer = (state = blocksConstructorInitialState, action) => {
-    console.log(action)
     switch (action.type) {
         case RECORD_INITIAL_BLOCK:
             return {

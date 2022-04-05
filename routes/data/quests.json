@@ -1,0 +1,53 @@
+[
+  {
+    "id": "bioushji3i",
+    "content": {
+      "initialBlock": {
+        "name": "",
+        "title": "",
+        "target": ""
+      },
+      "contentBlocks": [
+        {
+          "id": "pkfthth4ip",
+          "type": "text-block",
+          "order": "",
+          "nameStep": "",
+          "content": ""
+        }
+      ],
+      "finallyBlock": {
+        "finallyMessage": ""
+      }
+    }
+  },
+  {
+    "id": "is2077e2k8",
+    "content": {
+      "initialBlock": {
+        "name": "квест 1",
+        "title": "вв",
+        "target": "вввчмвч"
+      },
+      "contentBlocks": [
+        {
+          "id": "221q312d8n",
+          "type": "text-block",
+          "order": 1,
+          "nameStep": "Шаг 1",
+          "content": "аацуыауыаыуааыу аыу"
+        },
+        {
+          "id": "vcvfmnneol",
+          "type": "map-block",
+          "nameStep": "",
+          "content": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5297.484718044528!2d35.0435772!3d48.4038907!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dbfb3f783e26c9%3A0x75234ec2beac21eb!2z0JzQtdCx0LXQu9GMINCT0YPQtCDigJQg0LzQsNCz0LDQt9C40L0g0LzQtdCx0LXQu9C4INCyINCU0L3QtdC_0YDQtQ!5e0!3m2!1sru!2sby!4v1648472467672!5m2!1sru!2sby\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+          "order": 3
+        }
+      ],
+      "finallyBlock": {
+        "finallyMessage": ""
+      }
+    }
+  }
+]

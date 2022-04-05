@@ -1,45 +1,72 @@
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../context/authContext";
-
+import {useHttp} from "../../hooks/httpHook";
+import {useHistory} from 'react-router-dom'
+import {Input, Button} from "@mui/material";
 import './style.css'
 
-
 const AuthPage = () => {
+    const history = useHistory()
+    const {loading, request, error, clearError} = useHttp()
+    const auth = useContext(AuthContext);
+    const [form, setForm] = useState({email: '', password: ''})
 
-    const auth = useContext(AuthContext)
+    const changeHandler = event => {
+        setForm({...form, [event.target.name]: event.target.value})
+    }
+
+    useEffect(() => {
+        clearError()
+    }, [error, clearError])
+
+
+    const loginHandler = async () => {
+        try {
+            const data = await request('/api/auth/login', 'POST', {...form})
+            auth.login(data.token, data.userId)
+            history.push('/constructor')
+        } catch (e) {
+            alert(e.message)
+        }
+    }
+
+    const registerHandler = async () => {
+        try {
+            const data = await request('/api/auth/register', 'POST', {...form})
+        } catch (e) {
+            alert(e.message)
+        }
+    }
 
     return (
 
-                <div className="auth-wrapper">
-                    <div className="card-content white-text">
-                        <span className="card-title">Авторизация</span>
-                        <div>
-                            <div className="input-field">
-                                <input placeholder="Введите email"
-                                       className="yellow-input"
-                                       id="email"
-                                       type="text"
-                                       name="email"/>
-                            </div>
-                            <div className="input-field">
-                                <input placeholder="Введите пароль"
-                                       className="yellow-input"
-                                       id="password"
-                                       type="password"
-                                       name="password"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="card-action">
-                        <button className="btn yellow darken-4">
-                            Войти
-                        </button>
-                        <button className="btn grey lighten-1 black-text">
-                            Регистрация
-                        </button>
-                    </div>
+        <div className="auth-wrapper">
+            <div>
+                <h2>Авторизация</h2>
+                <div>
+                    <Input placeholder="Введите email"
+                           type="text"
+                           name="email"
+                           onChange={changeHandler}/>
+                    <Input placeholder="Введите пароль"
+                           type="password"
+                           name="password"
+                           onChange={changeHandler}/>
                 </div>
-
+            </div>
+            <div>
+                <Button
+                    disabled={loading}
+                    onClick={loginHandler}>
+                    Войти
+                </Button>
+                <Button
+                    onClick={registerHandler}
+                    disabled={loading}>
+                    Регистрация
+                </Button>
+            </div>
+        </div>
     )
 }
 

@@ -18,7 +18,6 @@ code {
   flex-flow: column nowrap;
   width: 100vw;
   height: 100vh;
-  border: 2px solid red;
   margin: 0 auto;
   box-sizing: border-box;
   max-width: 1207px;

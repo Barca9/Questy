@@ -1,9 +1,13 @@
 const {Router} = require('express')
+const path = require('path')
+const fs = require('fs')
+const router = Router()
 const config = require('config')
 const {check, validationResult} = require('express-validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const router = Router()
+const users = require('./data/users.json')
+
 
 // /api/auth/register
 router.post('/register',
@@ -24,7 +28,12 @@ router.post('/register',
 
         const {email, password} = req.body
 
-        // const candidate = await отправляем email,  ждём пока идёт проверка в бд
+        /*let data = fs.readFileSync(path.join(__dirname, 'data', 'users.json'), 'utf-8');
+        let usersData = JSON.parse(data);*/
+
+
+        const candidate = users.find(item=> item.email === email)
+        console.log(candidate)
 
         if(candidate) {
             return res.status(400).json({message: 'такой пользователь уже существует'})
@@ -32,13 +41,23 @@ router.post('/register',
 
         const hashedPassword = await bcrypt.hash(password, 12);
 
-        //const user = создаём нового пользователя {email, password: hashedPassword}
+        users.push({
+            id: Math.random().toString(32).substr(2, 10),
+            email,
+            password: hashedPassword
+        })
 
-        //await user.save()
+        let dataToWrite = JSON.stringify(users, null, 2);
 
-        res.status(201).json({message: 'пользователь создан'})
+        fs.writeFile(path.join(__dirname, 'data', 'users.json'),
+            dataToWrite, (err) => {
+            if (err) throw err;
+            console.log('Data written to file');
+            res.status(201).json({message: 'пользователь создан'})
+        });
 
     }catch (e){
+        console.log(e)
         res.status(500).json({message: 'что-то пошло не так на сервере, попробуйте снова'})
     }
 })
@@ -62,11 +81,11 @@ router.post('/login',
 
         const {email, password} = req.body
 
-            //const user  = найти пользователя ({email})
-/*
-        if (!user) = {
+        const user = users.find(item=> item.email === email)
+
+        if (!user) {
             return res.status(400).json({message: 'Позьзователь не найден'})
-        }*/
+        }
 
         const isMatch = await bcrypt.compare(password, user.password)
 
@@ -83,8 +102,6 @@ router.post('/login',
         )
 
         res.json({token, userId: user.id})
-
-
 
     }catch (e){
         res.status(500).json({message: 'что-то пошло не так на сервере, попробуйте снова'})

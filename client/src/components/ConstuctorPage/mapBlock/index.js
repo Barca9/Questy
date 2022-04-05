@@ -2,6 +2,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {getFinallyBlockSelector} from "../../../ducks/blocksConstructor/selectors";
 import {useState} from "react";
 import {ACTION_DELETE_CONTENT_BLOCK, ACTION_RECORD_CONTENT_BLOCK} from "../../../ducks/blocksConstructor/actions";
+import {Button, IconButton, Input} from "@mui/material";
+import './style.css'
+import DeleteIcon from "@mui/icons-material/Delete";
 
 
 const MapBlock = ({index, id}) => {
@@ -25,10 +28,15 @@ const MapBlock = ({index, id}) => {
         dispatch(ACTION_DELETE_CONTENT_BLOCK(id))
     }
 
+    function createMarkup() {
+        return {__html: contentForm.content};
+    }
+
+
     const showResultVue = () => {
         return <div className='text_block'>
             <div className='step_name'>{contentForm.nameStep}</div>
-            <code className='text_content'>{contentForm.content}</code>
+            <div className='divForMap' dangerouslySetInnerHTML={createMarkup()}/>
             <button onClick={handlerDeleteClick}>Удалить</button>
         </div>
     }
@@ -37,20 +45,27 @@ const MapBlock = ({index, id}) => {
 
     return isShowResultVue ? showResultVue()
         : <div className='text_block'>Контент
-            <form className='form_inputs'>
-                <input type="text" placeholder='Название шага'
+            <div className='form_inputs'>
+                <Input type="text" placeholder='Название шага'
+                       label="Multiline Placeholder"
                        name='nameStep'
                        value={contentForm.nameStep}
-                       onChange={handlerInputsChange}/>
-                <input type='text'
-                          placeholder='Введите ссылку'
-                          name='content'
-                          value={contentForm.content}
-                          onChange={handlerInputsChange}/>
-                <button onClick={handlerAddClick}>Добавить</button>
-                <button onClick={handlerDeleteClick}>Удалить</button>
-            </form>
-        </div>
+                       onChange={handlerInputsChange}
+                       margin="dense"/>
+                    <Input placeholder='Введите html-код от iframe'
+                           label="Multiline Placeholder"
+                           name='content'
+                           multiline
+                           value={contentForm.content}
+                           onChange={handlerInputsChange}
+                           margin="dense"
+                           rows={3}/>
+                </div>
+                <Button onClick={handlerAddClick}>Добавить</Button>
+            <IconButton aria-label="delete" onClick={handlerDeleteClick} classes='btn-delete'>
+                <DeleteIcon />
+            </IconButton>
+            </div>
 }
 
 

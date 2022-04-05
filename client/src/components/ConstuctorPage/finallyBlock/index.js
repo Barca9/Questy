@@ -8,6 +8,7 @@ const FinallyBlock = () => {
 
     const dispatch = useDispatch()
     const getFinallyBlock = useSelector(getFinallyBlockSelector)
+    const [isShowResultVue, setIsShowResultVue] = useState(false)
     const [finallyForm, setFinallyForm] = useState({finallyMessage: ''});
 
     const handlerInputsChange = ({target}) => setFinallyForm(prevState => ({
@@ -21,10 +22,18 @@ const FinallyBlock = () => {
         e.preventDefault()
         console.log(finallyForm)
         dispatch(ACTION_RECORD_FINALLY_BLOCK(finallyForm))
+        setIsShowResultVue(true)
+    }
+
+    const showResultVue = () => {
+        return <div className='text_block'>
+            <div className='step_name'>{finallyForm.finallyMessage}</div>
+        </div>
     }
 
 
-    return  <div className='finally_block'>Финальный блок
+    return isShowResultVue ? showResultVue()
+        :<div className='finally_block'>Финальный блок
         <form className='form_inputs'>
             <Input type="text" placeholder='Результат квеста'
                    name='finallyMessage'

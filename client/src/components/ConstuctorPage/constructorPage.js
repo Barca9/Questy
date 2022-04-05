@@ -7,6 +7,7 @@ import {getContentBlocksSelector} from "../../ducks/blocksConstructor/selectors"
 import {ACTION_CREATE_CONTENT_BLOCK, ACTION_DELETE_CONTENT_BLOCK} from "../../ducks/blocksConstructor/actions";
 import {sendQuestSaga} from "../../ducks/quests/sagas";
 import MapBlock from "./mapBlock";
+import MyButton from "../helpers/myButton";
 import './style.css'
 
 const ConstructorPage = () => {
@@ -28,11 +29,10 @@ const ConstructorPage = () => {
         }))
     }
 
-    const urlGet = '/api/quest/get'
-    const urlPost = '/api/quest/post'
+
+    const urlPost = '/api/quest/create'
 
     const saveQuestClick = () => {
-        console.log('Нажалась')
         dispatch(ACTION_SEND_DATA_QUEST(urlPost))
     }
 
@@ -74,9 +74,9 @@ const ConstructorPage = () => {
         </div>
         <div className='constructor_area'>
             <div className='buttons_area'>
-                <button className='button_constructor'>Запустить квест</button>
-                <button className='button_constructor'>Остановить квест</button>
-                <button className='button_constructor' onClick={saveQuestClick}>Сохранить</button>
+                <MyButton nameButton='Запустить квест'/>
+                <MyButton nameButton='Остановить квест'/>
+                <MyButton nameButton='Сохранить' func={saveQuestClick}/>
             </div>
             <div className='constructor_window'>
                 <InitialBlock/>
@@ -88,9 +88,3 @@ const ConstructorPage = () => {
 }
 
 export default ConstructorPage
-
-
-/*  Когда добавятся поля
-this.setState( prevState => ({
-    userFavorites: [...prevState.userFavourites,  {id: 3, title: 'C'}]
-}));*/

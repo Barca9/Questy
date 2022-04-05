@@ -15,6 +15,7 @@ export const useRoutes = (isAuthenticated) => {
                 <Switch>
                     <Route path='/constructor' component={ConstructorPage} exact/>
                     <Route path='/quests' component={QuestsShowPage}/>
+                    <Redirect to='/constructor'/>
                 </Switch>
                 <Footer/>
             </Router>

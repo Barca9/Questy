@@ -27,11 +27,12 @@ const TextBlock = ({index, id}) => {
         dispatch(ACTION_DELETE_CONTENT_BLOCK(id))
     }
 
+
     const showResultVue = () => {
         return <div className='text_block'>
             <div className='step_name'>{contentForm.nameStep}</div>
             <div className='text_content'>{contentForm.content}</div>
-            <button onClick={handlerDeleteClick}>Удалить</button>
+            <Button onClick={handlerDeleteClick}>Удалить</Button>
         </div>
     }
 
