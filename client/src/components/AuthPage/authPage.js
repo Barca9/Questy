@@ -20,11 +20,14 @@ const AuthPage = () => {
     }, [error, clearError])
 
 
+    const url = 'http://localhost:8080/api/auth/login'
+
     const loginHandler = async () => {
         try {
-            const data = await request('/api/auth/login', 'POST', {...form})
-            auth.login(data.token, data.userId)
-            history.push('/constructor')
+            const data = await request(url, 'POST', {...form})
+            /*auth.login(data.token, data.userId)
+            history.push('/constructor')*/
+            console.log(data)
         } catch (e) {
             alert(e.message)
         }
