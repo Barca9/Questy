@@ -1,8 +1,7 @@
-import {useDispatch, useSelector} from "react-redux";
-import {getFinallyBlockSelector} from "../../../ducks/blocksConstructor/selectors";
+import {useDispatch} from "react-redux";
 import {useState} from "react";
-import {ACTION_DELETE_CONTENT_BLOCK, ACTION_RECORD_CONTENT_BLOCK} from "../../../ducks/blocksConstructor/actions";
-import {Button, IconButton, Input, TextField} from "@mui/material";
+import {ACTION_DELETE_CONTENT_BLOCK} from "../../../ducks/blocksConstructor/actions";
+import {Button, IconButton, Input} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import './style.css'
 
@@ -17,15 +16,11 @@ const TextBlock = ({index, id}) => {
         [target.name]: target.value,
     }))
 
-    const handlerAddClick = (e) => {
-        e.preventDefault()
-        dispatch(ACTION_RECORD_CONTENT_BLOCK(contentForm))
-        setIsShowResultVue(true)
-    }
 
     const handlerDeleteClick = () => {
         dispatch(ACTION_DELETE_CONTENT_BLOCK(id))
     }
+
 
 
     const showResultVue = () => {

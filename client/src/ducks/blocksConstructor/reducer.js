@@ -1,74 +1,60 @@
 import {
     CREATE_CONTENT_BLOCK,
     DELETE_CONTENT_BLOCK,
-    RECORD_CONTENT_BLOCK,
-    RECORD_FINALLY_BLOCK,
-    RECORD_INITIAL_BLOCK
+    RECORD_CONTENTS_BLOCKS,
 } from "./actions";
 
 
 export const blocksConstructorInitialState = {
-    initialBlock: {
-        name: '',
-        title: '',
-        target: '',
-    },
-    contentBlocks: [{
-        id: Math.random().toString(32).substr(2, 10),
-        type:'text-block',
-        order: '',
-        nameStep: '',
-        content: ''
-    }],
-    finallyBlock: {
-        finallyMessage: ''
-    }
+    name: '',
+    title: '',
+    contents: [
+        {   id: Math.random().toString(32).substr(2, 10),
+            title: '',
+            text: '',
+        },
+        {   id: Math.random().toString(32).substr(2, 10),
+            title: '',
+            text: '',
+        },
+        {   id: Math.random().toString(32).substr(2, 10),
+            title: '',
+            text: '',
+        }
+    ],
+    status: '',
+    id:''
 };
+
 
 
 export const blocksConstructorReducer = (state = blocksConstructorInitialState, action) => {
     switch (action.type) {
-        case RECORD_INITIAL_BLOCK:
+        case RECORD_CONTENTS_BLOCKS:
             return {
                 ...state,
-                initialBlock: {
-                    name: action.payload.name,
-                    title: action.payload.title,
-                    target: action.payload.target
-                }
-            };
-        case RECORD_FINALLY_BLOCK:
-            return {
-                ...state,
-                finallyBlock: {
-                    finallyMessage: action.payload.finallyMessage,
-                }
-            };
-        case RECORD_CONTENT_BLOCK:
-            return {
-                ...state,
-                ...state.contentBlocks.map((item)=> {
+                ...state.contents.map((item) => {
                     if (item.id === action.payload.id) {
-                            item.order = action.payload.order
-                            item.nameStep = action.payload.nameStep
-                            item.content = action.payload.content
+                        item.title = action.payload.title
+                        item.text = action.payload.text
                     }
                 })
             };
         case CREATE_CONTENT_BLOCK:
+            let result = [...state.contents]
+            result.splice(-1,0,{
+                id: action.payload.id,
+                title: action.payload.title,
+                text: action.payload.text
+            })
             return {
                 ...state,
-                contentBlocks: [...state.contentBlocks, {
-                    id: action.payload.id,
-                    type: action.payload.type,
-                    nameStep: action.payload.nameStep,
-                    content: action.payload.content
-                }]
+                contents:result
             };
         case DELETE_CONTENT_BLOCK:
             return {
                 ...state,
-                contentBlocks: state.contentBlocks.filter((item)=> item.id !== action.payload)
+                contents: state.contents.filter((item) => item.id !== action.payload)
             };
         default:
             return {...state}
