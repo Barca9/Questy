@@ -1,8 +1,9 @@
 import {useDispatch, useSelector} from 'react-redux'
 import {getBlocksSelector} from "../../ducks/blocksConstructor/selectors";
-import {ACTION_CREATE_CONTENT_BLOCK} from "../../ducks/blocksConstructor/actions";
+import {ACTION_CREATE_CONTENT_BLOCK, ACTION_SAVE_QUEST} from "../../ducks/blocksConstructor/actions";
 import MyButton from "../helpers/myButton";
 import ContentBlock from "./сontentBlock";
+import {generateId} from "../../helpers/helperFunctions";
 import './style.css'
 
 const ConstructorPage = () => {
@@ -13,7 +14,7 @@ const ConstructorPage = () => {
 
     const addContentBlockClick = () => {
         dispatch(ACTION_CREATE_CONTENT_BLOCK({
-            id: Math.random().toString(32).substr(2, 10),
+            id: generateId(),
             title: '',
             text: ''
         }))
@@ -21,11 +22,11 @@ const ConstructorPage = () => {
 
     console.log(blocksSelector)
 
-    const generateId = () => {
-        return Math.random().toString(32).substr(2, 10)
-    }
+    const urlPost = '/api/quest'
 
-    const urlPost = '/api/quest/create'
+    const saveQuest = () => {
+       dispatch(ACTION_SAVE_QUEST(urlPost))
+    }
 
     return <div className='constructor'>
         <div className='template_area'>
@@ -52,7 +53,7 @@ const ConstructorPage = () => {
             <div className='buttons_area'>
                 <MyButton nameButton='Запустить квест'/>
                 <MyButton nameButton='Остановить квест'/>
-                <MyButton nameButton='Сохранить'/>
+                <MyButton nameButton='Сохранить' func={saveQuest}/>
             </div>
             <div className='constructor_window'>
                 {blocksSelector.map((item) => (

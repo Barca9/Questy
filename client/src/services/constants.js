@@ -1,5 +1,4 @@
-export const url = 'http://localhost:3000/';
-export const testUrl = 'https://test.by/';
 
+export const url = 'http://localhost:8080/';
 /*
 export const defConfig = 'defaultConfig';*/

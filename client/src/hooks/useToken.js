@@ -1,18 +1,20 @@
 import {useCallback, useState, useEffect} from 'react'
 
-const storageName = 'userToken'  //хранилище для токенов
+const storageName = 'userData'  //хранилище для токенов
 
-export const useAuth = () => {
+export const useToken = () => {
     const [token, setToken] = useState(null)
-    const [userId, setUserId] = useState(null)
 
-    const login = useCallback((token ) => {
-        setToken(token)
+    const login = useCallback((jwtToken) => {
+        setToken(jwtToken)
+
+        localStorage.setItem(storageName, JSON.stringify({
+            token: jwtToken
+        }))
     }, [])
 
     const logout = useCallback(() => {
         setToken(null)
-        setUserId(null)
         localStorage.removeItem(storageName)
     }, [])
 
@@ -25,5 +27,5 @@ export const useAuth = () => {
 
     }, [login])
 
-    return {login, logout, token, userId}
+    return {login, logout, token}
 }

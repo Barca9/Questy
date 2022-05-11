@@ -8,8 +8,8 @@ import './index.css'
 function App() {
 
     const {token, login, logout, userId} = useAuth()
-    const isAuthenticated = !!token;
-   /* const isAuthenticated = 10;*/
+    /*const isAuthenticated = !!token;*/
+    const isAuthenticated = 10;
     const routes = useRoutes(isAuthenticated)
 
   return (

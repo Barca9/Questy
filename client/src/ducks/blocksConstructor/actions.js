@@ -1,7 +1,7 @@
 export const CREATE_CONTENT_BLOCK = 'CREATE_CONTENT_BLOCK';
 export const RECORD_CONTENTS_BLOCKS = 'RECORD_CONTENTS_BLOCKS';
 export const DELETE_CONTENT_BLOCK = 'DELETE_CONTENT_BLOCK';
-
+export const SAVE_QUEST = 'SAVE_QUEST';
 
 export const ACTION_CREATE_CONTENT_BLOCK = (payload) => {
     return {
@@ -20,6 +20,13 @@ export const ACTION_RECORD_CONTENTS_BLOCKS = (payload) => {
 export const ACTION_DELETE_CONTENT_BLOCK = (payload) => {
     return{
         type: DELETE_CONTENT_BLOCK,
+        payload
+    }
+}
+
+export const ACTION_SAVE_QUEST = (payload) => {
+    return {
+        type: SAVE_QUEST,
         payload
     }
 }

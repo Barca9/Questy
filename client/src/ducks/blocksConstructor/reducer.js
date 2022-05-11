@@ -2,22 +2,24 @@ import {
     CREATE_CONTENT_BLOCK,
     DELETE_CONTENT_BLOCK,
     RECORD_CONTENTS_BLOCKS,
+    SAVE_QUEST
 } from "./actions";
+import {generateId} from "../../helpers/helperFunctions";
 
 
 export const blocksConstructorInitialState = {
     name: '',
     title: '',
     contents: [
-        {   id: Math.random().toString(32).substr(2, 10),
+        {   id: generateId(),
             title: '',
             text: '',
         },
-        {   id: Math.random().toString(32).substr(2, 10),
+        {   id: generateId(),
             title: '',
             text: '',
         },
-        {   id: Math.random().toString(32).substr(2, 10),
+        {   id: generateId(),
             title: '',
             text: '',
         }
@@ -56,6 +58,10 @@ export const blocksConstructorReducer = (state = blocksConstructorInitialState, 
                 ...state,
                 contents: state.contents.filter((item) => item.id !== action.payload)
             };
+        case SAVE_QUEST:
+            return {
+                ...state,
+            }
         default:
             return {...state}
     }

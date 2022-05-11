@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 import defaultConfig from './defaultConfig';
 
@@ -10,12 +9,12 @@ const createInstance = (config={}) => {
         ...config
     }
 
-    const instance = axios.create(newConfig);
-
-    return instance
+    return axios.create(newConfig)
 
 }
 
-console.log(process.env)
+
+
+//console.log(process.env)
 
 export default createInstance

@@ -5,7 +5,6 @@ import {
     GET_DATA_LIST_REQUESTED,
     SEND_DATA_QUEST
 } from "./actions";
-/*import axios from "axios";*/
 import createInstance from "../../services/axiosInstance";
 
 const API = createInstance();
