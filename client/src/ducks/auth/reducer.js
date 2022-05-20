@@ -1,4 +1,4 @@
-import {REQUESTED_TOKEN} from "./actions";
+import {CHANGE_TOKEN} from "./actions";
 import {REGISTRATION} from "./actions";
 import {AUTHORIZATION} from "./actions";
 
@@ -11,12 +11,12 @@ export const authInitialState = {
 
 export const authReducer = (state = authInitialState, action) => {
     switch (action.type) {
-        case REQUESTED_TOKEN: return {
-            ...state
+        case CHANGE_TOKEN: return {
+            ...state,
+            token: action.payload
         };
         case AUTHORIZATION: return {
             ...state,
-            token: action.payload,
             email: action.payload.email,
             password: action.payload.payload
         };

@@ -22,10 +22,8 @@ const ConstructorPage = () => {
 
     console.log(blocksSelector)
 
-    const urlPost = '/api/quest'
-
     const saveQuest = () => {
-       dispatch(ACTION_SAVE_QUEST(urlPost))
+       dispatch(ACTION_SAVE_QUEST())
     }
 
     return <div className='constructor'>

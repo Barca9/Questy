@@ -1,10 +1,10 @@
-export const REQUESTED_TOKEN = 'GET_REQUESTED_TOKEN';
+export const CHANGE_TOKEN = 'CHANGE_TOKEN';
 export const AUTHORIZATION = 'AUTHORIZATION';
 export const REGISTRATION = 'REGISTRATION';
 
-export const ACTION_REQUESTED_TOKEN = (payload) => {
+export const ACTION_CHANGE_TOKEN = (payload) => {
     return {
-        type: REQUESTED_TOKEN,
+        type: CHANGE_TOKEN,
         payload
     }
 }

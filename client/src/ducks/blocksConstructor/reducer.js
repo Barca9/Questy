@@ -24,8 +24,7 @@ export const blocksConstructorInitialState = {
             text: '',
         }
     ],
-    status: '',
-    id:''
+    status: ''
 };
 
 

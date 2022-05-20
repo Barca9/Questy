@@ -3,9 +3,10 @@ export const generateId = () => {
 }
 
 export const getToken = () => {
-    return JSON.parse(localStorage.getItem('userToken'))
+    return JSON.parse(localStorage.getItem('token'))
 }
 
 export const setToken = (token) => {
-    localStorage.setItem('userToken', JSON.stringify(token))
+    localStorage.setItem('token', JSON.stringify(token))
+    return token
 }
