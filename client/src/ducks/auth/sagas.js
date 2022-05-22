@@ -23,7 +23,8 @@ export function* registrationSaga(action) {
 
 export function* authorizationSaga(action) {
     try {
-        const {data} = yield call(API.post, urlLogin, action.payload)
+        const {data} = yield call(API.post, urlLogin, action.payload);
+       /* yield call(() => new Promise(resolve => resolve(setToken(data.authToken))))*/
         yield setToken(data.authToken)
     } catch (error) {
         console.log(error)

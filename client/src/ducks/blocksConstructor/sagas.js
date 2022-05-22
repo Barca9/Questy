@@ -1,16 +1,15 @@
 import createInstance from "../../services/axiosInstance";
-import {call, takeLatest, select} from "redux-saga/effects";
+import {call, takeLatest} from "redux-saga/effects";
 import {SAVE_QUEST} from "./actions";
-import {getConstructorSelector} from "./selectors";
+
 
 const API = createInstance();
 
 const urlSave = "/api/quest"
 
-export function* saveQuestSaga() {
+export function* saveQuestSaga(action) {
     try{
-        const dataQuest = yield select(getConstructorSelector)
-        const res = yield call(API.post, urlSave, dataQuest)
+        const res = yield call(API.post, urlSave, action.payload)
         console.log(res)
     }catch (error) {
         console.log(error)
