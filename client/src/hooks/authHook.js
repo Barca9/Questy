@@ -6,11 +6,9 @@ const storageName = 'token'  //хранилище для токенов
 
 export const useAuth = () => {
 
-    console.log('зашли в useAuth')
     const [token, setToken] = useState(getToken)
 
     const login = useCallback((token) => {
-        console.log('зашли в логин', token)
         setToken(token)
         localStorage.setItem(storageName, JSON.stringify(token))
     }, [])
@@ -21,7 +19,6 @@ export const useAuth = () => {
     }, [])
 
     useEffect(() => {
-        console.log('зашли в эффект')
         if (localStorage.getItem(storageName)) {
             login(token)
         }

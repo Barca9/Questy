@@ -1,7 +1,7 @@
 import {Input} from "@mui/material";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {ACTION_DELETE_CONTENT_BLOCK, ACTION_RECORD_CONTENTS_BLOCKS} from "../../../ducks/blocksConstructor/actions";
+import {ACTION_DELETE_CONTENT_BLOCK, ACTION_RECORD_CONTENTS_BLOCKS} from "../../../ducks/constructor/actions";
 
 const ContentBlock = ({id}) => {
 

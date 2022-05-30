@@ -1,9 +1,9 @@
 import {questsInitialState} from "../ducks/quests/reducer";
-import {blocksConstructorInitialState} from "../ducks/blocksConstructor/reducer";
+import {constructorInitialState} from "../ducks/constructor/reducer";
 import {authInitialState} from "../ducks/auth/reducer";
 
 export const initialState = {
     quests: questsInitialState,
-    blocks: blocksConstructorInitialState,
+    constructor: constructorInitialState,
     auth: authInitialState
 }

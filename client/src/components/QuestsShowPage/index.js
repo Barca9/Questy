@@ -1,21 +1,34 @@
 import {useState, useEffect} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {ACTION_GET_DATA_LIST_REQUESTED} from "../../ducks/quests/actions";
+import {getQuestsListSaga} from "../../ducks/quests/sagas";
+import {loadingDataSelector} from "../../ducks/quests/selectors";
+import Loader from "../helpers/Loader";
 
 
 const QuestsShowPage = () => {
+
     const dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch(ACTION_GET_DATA_LIST_REQUESTED())
+    },[])
+
+    const questsList = useSelector(getQuestsListSaga)
+
+    const loading = useSelector(loadingDataSelector)
 
     const url = '/api/quest/get'
 
-    useEffect(()=>{
-        dispatch(ACTION_GET_DATA_LIST_REQUESTED(url))
-    },[])
-
 
     return (
+
         <div>
-            <input type="text" />
+            {loading
+                ? <Loader/>
+                : <div>Ку ку</div>
+            }
+
         </div>
     )
 }

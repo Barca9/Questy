@@ -17,6 +17,6 @@ export function* saveQuestSaga(action) {
 }
 
 
-export function* questSaga() {
+export function* constructorSaga() {
     yield takeLatest(SAVE_QUEST, saveQuestSaga)
 }

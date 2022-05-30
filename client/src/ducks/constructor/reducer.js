@@ -7,7 +7,7 @@ import {
 import {generateId} from "../../helpers/helperFunctions";
 
 
-export const blocksConstructorInitialState = {
+export const constructorInitialState = {
     name: '',
     title: '',
     contents: [
@@ -29,7 +29,7 @@ export const blocksConstructorInitialState = {
 
 
 
-export const blocksConstructorReducer = (state = blocksConstructorInitialState, action) => {
+export const constructorReducer = (state = constructorInitialState, action) => {
     switch (action.type) {
         case RECORD_CONTENTS_BLOCKS:
             return {

@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from 'react-redux'
-import {getBlocksSelector, getConstructorSelector} from "../../ducks/blocksConstructor/selectors";
-import {ACTION_CREATE_CONTENT_BLOCK, ACTION_SAVE_QUEST} from "../../ducks/blocksConstructor/actions";
+import {getBlocksSelector, getConstructorSelector} from "../../ducks/constructor/selectors";
+import {ACTION_CREATE_CONTENT_BLOCK, ACTION_SAVE_QUEST} from "../../ducks/constructor/actions";
 import MyButton from "../helpers/myButton";
 import ContentBlock from "./сontentBlock";
 import {generateId} from "../../helpers/helperFunctions";
@@ -9,9 +9,7 @@ import './style.css'
 const ConstructorPage = () => {
 
     const dispatch = useDispatch()
-
     const blocksSelector = useSelector(getBlocksSelector)
-
     const constructorSelector = useSelector(getConstructorSelector)
 
     const addContentBlockClick = () => {
@@ -22,7 +20,6 @@ const ConstructorPage = () => {
         }))
     }
 
-    console.log(blocksSelector)
 
     const deleteIdOutContentsBlocks = (contentsBlock) => {
         let cloneContentsBlocks = JSON.parse(JSON.stringify(contentsBlock));
@@ -32,6 +29,7 @@ const ConstructorPage = () => {
         })
         return cloneContentsBlocks
     }
+
 
     const saveQuest = () => {
         dispatch(ACTION_SAVE_QUEST(deleteIdOutContentsBlocks(constructorSelector)))

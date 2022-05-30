@@ -23,7 +23,7 @@ export const Navbar = () => {
             </ul>*/}
             <ul className='k'>
                 <li className="brand-logo">Questy</li>
-                <li><NavLink to="/flight/all">Квесты</NavLink></li>
+                <li><NavLink to="/constructor">Конструктор</NavLink></li>
                 <li><a href="/" onClick={logoutHandler}>Выйти</a></li>
             </ul>
         </nav>

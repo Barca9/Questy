@@ -1,6 +1,6 @@
 import {useDispatch} from "react-redux";
 import {useState} from "react";
-import {ACTION_DELETE_CONTENT_BLOCK} from "../../../ducks/blocksConstructor/actions";
+import {ACTION_DELETE_CONTENT_BLOCK} from "../../../ducks/constructor/actions";
 import {Button, IconButton, Input} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import './style.css'

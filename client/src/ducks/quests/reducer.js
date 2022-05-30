@@ -1,4 +1,4 @@
-import {GET_DATA_FAILED, GET_DATA_LIST_REQUESTED, GET_DATA_LIST_SUCCEED, SEND_DATA_QUEST} from "./actions";
+import {GET_DATA_FAILED, GET_DATA_LIST_REQUESTED, GET_DATA_LIST_SUCCEED} from "./actions";
 
 export const questsInitialState = {
     data: [],
@@ -15,7 +15,9 @@ export const questsReducer = (state = questsInitialState, action) => {
             error: questsInitialState.error
         };
 
-        case GET_DATA_LIST_SUCCEED: return {
+        case GET_DATA_LIST_SUCCEED:
+            console.log('в редьюсере',action.payload)
+            return {
             ...state,
             data: action.payload,
             isLoading: false
@@ -27,11 +29,6 @@ export const questsReducer = (state = questsInitialState, action) => {
             isLoading: false
         };
 
-        case SEND_DATA_QUEST:
-            console.log('reducer')
-            return {
-            ...state
-        }
         default: return {...state}
     }
 }

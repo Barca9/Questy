@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
-import {getFinallyBlockSelector} from "../../../ducks/blocksConstructor/selectors";
+import {getFinallyBlockSelector} from "../../../ducks/constructor/selectors";
 import {useState} from "react";
-import {ACTION_DELETE_CONTENT_BLOCK, ACTION_RECORD_CONTENT_BLOCK} from "../../../ducks/blocksConstructor/actions";
+import {ACTION_DELETE_CONTENT_BLOCK, ACTION_RECORD_CONTENT_BLOCK} from "../../../ducks/constructor/actions";
 import {Button, IconButton, Input} from "@mui/material";
 import './style.css'
 import DeleteIcon from "@mui/icons-material/Delete";

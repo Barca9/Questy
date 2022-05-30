@@ -6,7 +6,6 @@ import {Navbar} from "../components/Navbar";
 import {Footer} from "../components/Footer";
 
 export const useRoutes = (isAuthenticated) => {
-console.log('в роутах', isAuthenticated)
 
     if (isAuthenticated) {
 
@@ -14,9 +13,9 @@ console.log('в роутах', isAuthenticated)
             <Router>
                 <Navbar/>
                 <Switch>
-                    <Route path='/constructor' component={ConstructorPage} exact/>
-                    <Route path='/quests' component={QuestsShowPage}/>
-                    <Redirect to='/constructor'/>
+                    <Route path='/quests' component={QuestsShowPage} exact/>
+                    <Route path='/constructor' component={ConstructorPage} />
+                    <Redirect to='/quests'/>
                 </Switch>
                 <Footer/>
             </Router>

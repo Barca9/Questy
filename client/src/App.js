@@ -11,8 +11,6 @@ function App() {
     const {token, login, logout} = useAuth()
     const isAuthenticated = !!token;
     /*const isAuthenticated = !!getToken()*/
-    /*const isAuthenticated = 10;*/
-    console.log('в App', isAuthenticated)
     const routes = useRoutes(isAuthenticated)
 
 

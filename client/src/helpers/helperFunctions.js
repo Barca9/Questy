@@ -3,7 +3,9 @@ export const generateId = () => {
 }
 
 export const getToken = () => {
-    return JSON.parse(localStorage.getItem('token'))
+    let token = JSON.parse(localStorage.getItem('token'))
+    console.log('!!!!!!', token)
+    return token
 }
 
 export const setToken = (token) => {
